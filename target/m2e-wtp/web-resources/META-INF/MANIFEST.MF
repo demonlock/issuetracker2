@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: issuetracker
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Derya Kaya
+Implementation-Vendor-Id: com.kaya
+Build-Jdk: 1.8.0_172
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/issuetracker
+Created-By: Maven Integration for Eclipse
+
