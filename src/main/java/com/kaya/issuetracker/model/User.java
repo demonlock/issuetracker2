@@ -1,12 +1,43 @@
 package com.kaya.issuetracker.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_User")
 public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="IssueTrackerSeqGen")
+	@SequenceGenerator(name="IssueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
+	
+	@Column(name="firstname")
 	private String firstName;
+	
+	@Column(name="lastname")
 	private String lastName;
+	
+	@Column(name="username")
 	private String userName;
-	private Long branchId;
+	
+	@ManyToOne
+	@JoinColumn(name="branchId")
 	private Branch branch;
+	
+	@OneToMany(mappedBy="user")
+	private Set<IssueAction> issueAction = new HashSet<>(); 
+	
 	public Long getId() {
 		return id;
 	}
@@ -31,22 +62,24 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Long getBranchId() {
-		return branchId;
-	}
-	public void setBranchId(Long branchId) {
-		this.branchId = branchId;
-	}
+	
+
 	public Branch getBranch() {
 		return branch;
 	}
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
+	public Set<IssueAction> getIssueAction() {
+		return issueAction;
+	}
+	public void setIssueAction(Set<IssueAction> issueAction) {
+		this.issueAction = issueAction;
+	}
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", branchId=" + branchId + "]";
+				+ ", branchId=" + branch.getId() + "]";
 	}
 	
 	

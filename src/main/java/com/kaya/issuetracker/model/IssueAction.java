@@ -2,15 +2,40 @@ package com.kaya.issuetracker.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_issueAction")
 public class IssueAction {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
+	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
-	private Long actionTypeId;
+	
+	@Column(name="actionDate")
 	private Date actionDate;
-	private Long userId;
-	private Long issueId;
+	
+	@Column(name="read")
 	private Integer read;
+	
+	@ManyToOne
+	@JoinColumn(name="userId")
 	private User user;
+
+	@ManyToOne
+	@JoinColumn(name="issueId")
 	private Issue issue;
+	
+	@ManyToOne
+	@JoinColumn(name="actionTypeId")
 	private ActionType actionType;
 	
 	public Long getId() {
@@ -19,29 +44,11 @@ public class IssueAction {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getActionTypeId() {
-		return actionTypeId;
-	}
-	public void setActionTypeId(Long actionTypeId) {
-		this.actionTypeId = actionTypeId;
-	}
 	public Date getActionDate() {
 		return actionDate;
 	}
 	public void setActionDate(Date actionDate) {
 		this.actionDate = actionDate;
-	}
-	public Long getUserId() {
-		return userId;
-	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-	public Long getIssueId() {
-		return issueId;
-	}
-	public void setIssueId(Long issueId) {
-		this.issueId = issueId;
 	}
 	public Integer getRead() {
 		return read;
@@ -69,7 +76,7 @@ public class IssueAction {
 	}
 	@Override
 	public String toString() {
-		return "IssueAction [id=" + id + ", actionType=" + actionType + ", userId=" + userId + ", issueId=" + issueId
+		return "IssueAction [id=" + id + ", actionType=" + actionType.getId() + ", userId=" + user.getId() + ", issueId=" + issue.getId()
 				+ "]";
 	}
 	

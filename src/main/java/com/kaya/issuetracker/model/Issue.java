@@ -4,14 +4,42 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_issue")
 public class Issue {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
+	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
+	
+	@Column(name="createDate")
 	private Date createDate;
+	
+	@Column(name="scheduledDate")
 	private Date scheduledDate;
+	
+	@Column(name="subject")
 	private String subject;
+	
+	@Column(name="body")
 	private String body;
+	
+	@Column(name="closed")
 	private Integer closed;
+	
+	@OneToMany
 	private Set<IssueMessage> issueMessages= new HashSet<>();
+	
+	@OneToMany
 	private Set<IssueAction> issueActions=new HashSet<>();
 	
 	public Long getId() {
