@@ -1,3 +1,16 @@
+create table users(
+	username varchar(128) not null primary key,
+	password varchar(512) not null,
+	enabled boolean not null
+);
+
+create table authorities(
+	username varchar(128) not null,
+	authority varchar(128) not null
+);
+
+create unique index idx_auth_username on authorities(username,authority);
+
 create table public.t_user(
 	id bigint not null,
 	firstname varchar(255),
@@ -18,7 +31,7 @@ create table public.t_actionType(
 
 create table public.t_issueAction(
 	id bigint not null,
-	actionDate DateTime,
+	actionDate Date,
 	read int,
 	userId bigint,
 	issueId bigint,
@@ -30,27 +43,27 @@ create table public.t_issueMessage(
 	messageSubject varchar(max),
 	messageBody varchar(max),
 	importanceLevel int,
-	createDate DateTime,
+	createDate Date,
 	userId bigint,
 	issueId bigint
 );
 
 create table public.t_issue(
 	id bigint not null,
-	createDate DateTime,
-	scheduledDate DateTime,
+	createDate Date,
+	scheduledDate Date,
 	subject varchar(max),
 	body varchar(max),
 	closed int
 );
 
 
-alter table public.t_user add constraint public.constraint_1 primary key(id);
-alter table public.t_branch add constraint public.constraint_2 primary key(id);
-alter table public.t_actionType add constraint public.constraint_3 primary key(id);
-alter table public.t_issueAction add constraint public.constraint_4 primary key(id);
-alter table public.t_issueMessage add constraint public.constraint_5 primary key(id);
-alter table public.t_issue add constraint public.constraint_6 primary key(id);
+alter table public.t_user add constraint public.t_user_constraint_1 primary key(id);
+alter table public.t_branch add constraint public.t_branch_constraint_1 primary key(id);
+alter table public.t_actionType add constraint public.t_actionType_constraint_1 primary key(id);
+alter table public.t_issueAction add constraint public.t_issueAction_constraint_1 primary key(id);
+alter table public.t_issueMessage add constraint public.t_issueMessage_constraint_1 primary key(id);
+alter table public.t_issue add constraint public.t_issue_constraint_1 primary key(id);
 
 alter table public.t_user add constraint public.constraint_fk1 foreign key(branchId) references public.t_branch(id);
 alter table public.t_issueAction add constraint public.constraint_fk2 foreign key(userId) references public.t_user(id);

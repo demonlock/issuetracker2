@@ -21,10 +21,10 @@ public class Issue {
 	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
 	
-	@Column(name="createDate")
+	@Column(name="createdate")
 	private Date createDate;
 	
-	@Column(name="scheduledDate")
+	@Column(name="scheduleddate")
 	private Date scheduledDate;
 	
 	@Column(name="subject")

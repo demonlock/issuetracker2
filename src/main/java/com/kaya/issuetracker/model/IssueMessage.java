@@ -13,31 +13,31 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_issueMessage")
+@Table(name="t_issuemessage")
 public class IssueMessage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
 	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
 	
-	@Column(name="messageSubject")
+	@Column(name="messagesubject")
 	private String messageSubject;
 	
-	@Column(name="messageBody")
+	@Column(name="messagebody")
 	private String messageBody;
 	
-	@Column(name="importanceLevel")
+	@Column(name="importancelevel")
 	private Integer importanceLevel;
 	
-	@Column(name="createDate")
+	@Column(name="createdate")
 	private Date createDate;
 	
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name="userid")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="issueId")
+	@JoinColumn(name="issueid")
 	private Issue issue;
 	
 	public Long getId() {

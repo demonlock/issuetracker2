@@ -13,29 +13,29 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_issueAction")
+@Table(name="t_issueaction")
 public class IssueAction {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
 	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
 	
-	@Column(name="actionDate")
+	@Column(name="actiondate")
 	private Date actionDate;
 	
 	@Column(name="read")
 	private Integer read;
 	
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name="userid")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name="issueId")
+	@JoinColumn(name="issueid")
 	private Issue issue;
 	
 	@ManyToOne
-	@JoinColumn(name="actionTypeId")
+	@JoinColumn(name="actiontypeid")
 	private ActionType actionType;
 	
 	public Long getId() {

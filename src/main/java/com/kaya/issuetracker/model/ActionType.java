@@ -9,14 +9,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_actionType")
+@Table(name="t_actiontype")
 public class ActionType {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
 	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
 	
-	@Column(name="actionName")
+	@Column(name="actionname")
 	private String actionName;
 	
 	public Long getId() {

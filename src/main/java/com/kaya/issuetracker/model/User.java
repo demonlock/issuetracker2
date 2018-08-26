@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_User")
+@Table(name="t_user")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="IssueTrackerSeqGen")
@@ -32,7 +32,7 @@ public class User {
 	private String userName;
 	
 	@ManyToOne
-	@JoinColumn(name="branchId")
+	@JoinColumn(name="branchid")
 	private Branch branch;
 	
 	@OneToMany(mappedBy="user")

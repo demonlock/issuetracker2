@@ -20,7 +20,7 @@ public class Branch {
 	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
 	private Long id;
 	
-	@Column(name="branchName")
+	@Column(name="branchname")
 	private String branchName;
 	
 	@OneToMany
