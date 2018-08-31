@@ -36,10 +36,10 @@ public class Issue {
 	@Column(name="closed")
 	private Integer closed;
 	
-	@OneToMany
+	@OneToMany(mappedBy="issue")
 	private Set<IssueMessage> issueMessages= new HashSet<>();
 	
-	@OneToMany
+	@OneToMany(mappedBy="issue")
 	private Set<IssueAction> issueActions=new HashSet<>();
 	
 	public Long getId() {

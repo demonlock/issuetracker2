@@ -29,14 +29,6 @@ public class IssueTrackerRepositoryJpaImpl implements IssueRepository {
 	}
 
 	@Override
-	public List<Issue> findByUserIdWithActionTypeId(Long userId, Long ActionTypeId, Integer Closed) {
-		return entityManager.createQuery("from Issue where userId=:userId and actionTypeId=:actionTypeId and closed=:closed",Issue.class).
-				setParameter("userId", userId).
-				setParameter("actionTypeId", ActionTypeId).
-				setParameter("closed",Closed).getResultList();
-	}
-
-	@Override
 	public Issue findById(Long id) {
 		return entityManager.find(Issue.class, id);
 	}

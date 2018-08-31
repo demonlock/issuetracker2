@@ -7,7 +7,6 @@ import com.kaya.issuetracker.model.Issue;
 public interface IssueRepository {
 	List<Issue> findAll();
 	List<Issue> findByUserId(Long userId,Integer Closed);
-	List<Issue> findByUserIdWithActionTypeId(Long userId,Long ActionTypeId,Integer Closed);
 	Issue findById(Long id);
 	void create(Issue issue);
 	Issue update(Issue issue);

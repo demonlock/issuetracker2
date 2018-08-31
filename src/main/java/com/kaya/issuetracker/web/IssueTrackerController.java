@@ -16,7 +16,9 @@ public class IssueTrackerController {
 	@RequestMapping("/issues")
 	public ModelAndView getIssues() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("issues",issueTrackerService.findIssue());
+		mav.addObject("toDoIssues",issueTrackerService.findIssuesByActionType(1L, 1L));
+		mav.addObject("workingIssues",issueTrackerService.findIssuesByActionType(1L, 2L));
+		mav.addObject("finishedIssues",issueTrackerService.findIssuesByActionType(1L, 3L));
 		mav.setViewName("issues");
 		return mav;
 	}
