@@ -47,6 +47,15 @@ div.container {
     font-size: 11px;
     
 }
+
+table.newBand {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-color: none;
+    width:100%;
+}
+
 </style>
 
 </head>
@@ -54,7 +63,7 @@ div.container {
 <table align="center" valign="top" width="800px" height="100%">
 	<tr valign="top">
 	<td width="30%">
-		<div class="bandHeader"><span>TODO</span></div>
+		<div class="bandHeader"><table class="newBand"><tr><td width="90%">Todo</td><td><a href="/issues/new/1"><img src="/img/new.png" width="15px" height="15px"></img></a></td></tr></table></div>
 		<br/>
 		<div class="IssueContainerByActionType">
 		<c:if test="${toDoIssues==null}">
@@ -75,7 +84,7 @@ div.container {
 		</div>
 	</td>
 	<td width="30%">
-		<div class="bandHeader"><span>Working</span></div>
+		<div class="bandHeader"><table class="newBand"><tr><td width="90%">Working</td><td><a href="/issues/new/2"><img src="/img/new.png" width="15px" height="15px"></img></a></td></tr></table></div>
 		<br/>
 		<div class="IssueContainerByActionType">
 		<c:if test="${empty workingIssues}">
@@ -96,7 +105,7 @@ div.container {
 		</div>
 	</td>
 	<td width="30%">
-		<div class="bandHeader"><span>Finished</span></div>
+		<div class="bandHeader"><table class="newBand"><tr><td width="90%">Finished</td><td><a href="/issues/new/3"><img src="/img/new.png" width="15px" height="15px"></img></a></td></tr></table></div>
 		<br/>
 		<div class="IssueContainerByActionType">
 		<c:if test="${empty finishedIssues}">

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Issue {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="issueTrackerSeqGen")
-	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issueTracker_sequence")
+	@SequenceGenerator(name="issueTrackerSeqGen",sequenceName="issuetracker_sequence")
 	private Long id;
 	
 	@Column(name="createdate")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,7 @@ import com.kaya.issuetracker.dao.IssueRepository;
 import com.kaya.issuetracker.model.Issue;
 
 @Repository
+@Transactional
 public class IssueTrackerRepositoryJpaImpl implements IssueRepository {
 	
 	@PersistenceContext
